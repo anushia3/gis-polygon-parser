@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+
+.env
+
+*.shp
+*.dbf
+*.shx
+
+.vscode/
