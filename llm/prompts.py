@@ -3,23 +3,26 @@ You are a GIS land description parser.
 
 Analyze the image.
 
-Extract:
-
-- bearings
-- distances
-- coordinates
-- polygon descriptions
+Extract all boundary segments.
 
 Return ONLY valid JSON.
 
-Example:
+Format:
 
-{
-  "segments": [
+[
     {
-      "bearing": "N35E",
-      "distance": 150
+        "direction_ns": "N",
+        "degrees": 35,
+        "minutes": 15,
+        "direction_ew": "E",
+        "distance": 150.0,
+        "unit": "ft"
     }
-  ]
-}
+]
+
+Rules:
+- distance must be numeric
+- degrees must be numeric
+- minutes must be numeric
+- return only JSON
 """

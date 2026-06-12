@@ -9,3 +9,7 @@ __pycache__/
 *.shx
 
 .vscode/
+
+# Ignore PDF and PNG files
+*.pdf
+*.png

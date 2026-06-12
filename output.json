@@ -1,0 +1,34 @@
+[
+    {
+        "direction_ns": "N",
+        "degrees": 35,
+        "minutes": 15,
+        "direction_ew": "E",
+        "distance": 150.0,
+        "unit": "ft"
+    },
+    {
+        "direction_ns": "S",
+        "degrees": 55,
+        "minutes": 0,
+        "direction_ew": "E",
+        "distance": 75.5,
+        "unit": "ft"
+    },
+    {
+        "direction_ns": "S",
+        "degrees": 35,
+        "minutes": 15,
+        "direction_ew": "W",
+        "distance": 150.0,
+        "unit": "ft"
+    },
+    {
+        "direction_ns": "N",
+        "degrees": 55,
+        "minutes": 0,
+        "direction_ew": "W",
+        "distance": 75.5,
+        "unit": "ft"
+    }
+]
