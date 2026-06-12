@@ -22,7 +22,12 @@ Format:
 
 Rules:
 - distance must be numeric
+- Do not include explanations.
+- Do not include comments.
+- Do not include markdown.
 - degrees must be numeric
 - minutes must be numeric
 - return only JSON
+- Minutes must be an integer.
+- Use 0 instead of 00.
 """

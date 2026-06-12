@@ -1,39 +1,33 @@
-from ollama import chat
-from llm.prompts import EXTRACTION_PROMPT
 import json
 
-response = chat(
-    model="qwen2.5vl:latest",
-    messages=[
-        {
-            "role": "user",
-            "content": EXTRACTION_PROMPT,
-            "images": ["sample_data/test.png"]
-        }
-    ]
-)
+from llm.extractor import extract_segments
+from geometry.polygon_builder import build_vertices
+from visualization.polygon_plotter import plot_polygon
 
-content = response["message"]["content"]
 
-# Remove markdown wrappers if the model returns them
-content = content.replace("```json", "")
-content = content.replace("```", "")
-content = content.strip()
+IMAGE_PATH = input("Enter image path:")
 
-# Convert JSON string -> Python object
-data = json.loads(content)
 
-# Save JSON to file
-with open("output.json", "w", encoding="utf-8") as f:
-    json.dump(data, f, indent=4, ensure_ascii=False)
+segments = extract_segments(IMAGE_PATH)
 
-print("Parsed successfully!")
-print("Type:", type(data))
-print("Number of segments:", len(data))
-print()
+with open(
+    "output.json",
+    "w",
+    encoding="utf-8"
+) as f:
 
-# Print each extracted segment
-for i, segment in enumerate(data, start=1):
-    print(f"Segment {i}")
-    print(segment)
-    print()
+    json.dump(
+        segments,
+        f,
+        indent=4,
+        ensure_ascii=False
+    )
+
+vertices = build_vertices(segments)
+
+print("Vertices:")
+
+for vertex in vertices:
+    print(vertex)
+
+plot_polygon(vertices)
