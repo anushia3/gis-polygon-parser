@@ -3,12 +3,23 @@ import json
 from llm.extractor import extract_segments
 from geometry.polygon_builder import build_vertices
 from visualization.polygon_plotter import plot_polygon
+from pdf.pdf_converter import pdf_to_images
 
 
-IMAGE_PATH = input("Enter image path:")
+file_path = input("Enter file path: ")
 
+if file_path.lower().endswith(".pdf"):
 
-segments = extract_segments(IMAGE_PATH)
+    image_paths = pdf_to_images(file_path)
+
+    print("Converted pages:")
+    print(image_paths)
+
+    segments = extract_segments(image_paths)
+
+else:
+
+    segments = extract_segments(file_path)
 
 with open(
     "output.json",
@@ -25,7 +36,7 @@ with open(
 
 vertices = build_vertices(segments)
 
-print("Vertices:")
+print("\nVertices:")
 
 for vertex in vertices:
     print(vertex)
