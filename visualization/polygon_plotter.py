@@ -1,14 +1,18 @@
 import matplotlib.pyplot as plt
 
 
-def plot_polygon(vertices):
+def plot_polygon(vertices, show=True):
     x = [point[0] for point in vertices]
     y = [point[1] for point in vertices]
 
-    plt.figure(figsize=(6, 6))
-    plt.plot(x, y, marker="o")
+    fig, ax = plt.subplots(figsize=(6, 6))
 
-    plt.axis("equal")
-    plt.grid(True)
+    ax.plot(x, y, marker="o")
 
-    plt.show()
+    ax.set_aspect("equal")
+    ax.grid(True)
+
+    if show:
+        plt.show()
+
+    return fig
