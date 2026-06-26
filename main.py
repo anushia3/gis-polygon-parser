@@ -4,6 +4,7 @@ from llm.extractor import extract_segments
 from geometry.polygon_builder import build_vertices
 from visualization.polygon_plotter import plot_polygon
 from pdf.pdf_converter import pdf_to_images
+from export.shapefile_exporter import export_shapefile
 
 
 file_path = input("Enter file path: ")
@@ -35,6 +36,7 @@ with open(
     )
 
 vertices = build_vertices(segments)
+export_shapefile(vertices)
 
 print("\nVertices:")
 
